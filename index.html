@@ -12,34 +12,86 @@
     --ink-soft: #5B4560;
     --ground: #FBF3EC;
     --surface: #FFFFFF;
+    --surface-2: #F6EBE0;
     --surface-line: #E3CDBC;
     --gold: #A66A17;
     --gold-bg: #C2871F;
     --raspberry: #9C2C5B;
+    --raspberry-soft: #E7B8CB;
+    --sky: #3A6CA8;
     --font-display: 'Bricolage Grotesque', Georgia, serif;
     --font-body: 'Karla', 'Segoe UI', sans-serif;
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--ground);
     color: var(--ink);
     font-family: var(--font-body);
     line-height: 1.6;
+    overflow-x: hidden;
   }
-  .wrap { max-width: 640px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
 
-  header { text-align: center; margin-bottom: 2rem; }
-  .logo { width: 128px; height: 128px; border-radius: 24px; box-shadow: 0 8px 24px -8px rgba(42,23,48,0.35); }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 1.25rem; }
+  section { padding: 3.5rem 0; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 3.5rem 0 3rem;
+    overflow: hidden;
+  }
+  .hero-deco { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+  .hero-deco span {
+    position: absolute;
+    font-size: 1.6rem;
+    opacity: 0.5;
+    animation: float 7s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(8deg); }
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .logo {
+    width: 132px; height: 132px; border-radius: 26px;
+    box-shadow: 0 10px 28px -10px rgba(42,23,48,0.4);
+    animation: pop-in 0.6s cubic-bezier(.2,1.4,.4,1) both;
+  }
+  @keyframes pop-in { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
   h1 {
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 2rem;
-    margin: 1rem 0 0.3rem;
+    font-weight: 800;
+    font-size: clamp(2.1rem, 6vw, 2.9rem);
+    margin: 1.1rem 0 0.3rem;
+    text-wrap: balance;
   }
-  .tagline { color: var(--ink-soft); font-size: 0.98rem; margin: 0; }
+  .tagline { color: var(--ink-soft); font-size: 1.02rem; margin: 0 0 1.6rem; }
 
-  .links { display: flex; flex-direction: column; gap: 0.75rem; margin: 2rem 0; }
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 2.2rem;
+    flex-wrap: wrap;
+    margin: 0 0 2rem;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: var(--raspberry);
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+
+  .links { display: flex; flex-direction: column; gap: 0.75rem; max-width: 440px; margin: 0 auto; }
   .link-btn {
     display: flex;
     align-items: center;
@@ -50,28 +102,71 @@
     padding: 0.95rem 1.2rem;
     text-decoration: none;
     color: var(--ink);
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.02rem;
     box-shadow: 0 1px 2px rgba(42,23,48,0.06);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
   }
-  .link-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -8px rgba(42,23,48,0.25); }
+  .link-btn:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 12px 26px -10px rgba(42,23,48,0.3); }
+  .link-btn:focus-visible { outline: 2px solid var(--raspberry); outline-offset: 2px; }
   .link-btn .icon { width: 24px; height: 24px; flex: none; }
-  .link-btn .arrow { margin-left: auto; color: var(--ink-soft); }
+  .link-btn .arrow { margin-left: auto; color: var(--ink-soft); transition: transform 0.18s ease; }
+  .link-btn:hover .arrow { transform: translateX(4px); }
 
-  section.worksheets { margin-top: 2.5rem; }
+  /* ---------- Section headings ---------- */
   h2 {
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.4rem;
+    font-weight: 800;
+    font-size: 1.55rem;
     text-align: center;
-    margin-bottom: 0.3rem;
+    margin: 0 0 0.3rem;
+    text-wrap: balance;
   }
-  .section-sub { text-align: center; color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 1.5rem; }
+  .section-sub { text-align: center; color: var(--ink-soft); font-size: 0.94rem; margin: 0 0 1.8rem; }
 
+  /* ---------- Featured video ---------- */
+  .featured {
+    background: linear-gradient(160deg, var(--surface-2), var(--ground));
+    border-radius: 24px;
+  }
+  .video-frame {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    aspect-ratio: 9/16;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 44px -18px rgba(42,23,48,0.4);
+    border: 6px solid var(--surface);
+  }
+  .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-caption { text-align: center; margin-top: 1rem; color: var(--ink-soft); font-size: 0.92rem; }
+  .video-caption strong { color: var(--ink); }
+
+  /* ---------- Cast ---------- */
+  .cast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  .cast-card {
+    background: var(--surface);
+    border-radius: 18px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(42,23,48,0.06);
+    transition: transform 0.25s cubic-bezier(.2,1.2,.4,1), box-shadow 0.25s ease;
+  }
+  .cast-card:hover { transform: rotate(-2deg) translateY(-4px); box-shadow: 0 16px 30px -14px rgba(42,23,48,0.3); }
+  .cast-card:nth-child(even):hover { transform: rotate(2deg) translateY(-4px); }
+  .cast-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; display: block; }
+  .cast-name { font-family: var(--font-display); font-weight: 700; padding: 0.6rem 0 0.9rem; font-size: 1rem; }
+
+  /* ---------- Worksheets ---------- */
   .worksheet-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 1rem;
   }
   .worksheet-card {
@@ -84,57 +179,118 @@
     box-shadow: 0 1px 2px rgba(42,23,48,0.06);
     display: flex;
     flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
+  .worksheet-card:hover { transform: translateY(-4px); box-shadow: 0 14px 26px -12px rgba(42,23,48,0.28); }
   .worksheet-card img { width: 100%; aspect-ratio: 8.5/11; object-fit: cover; display: block; border-bottom: 1px solid var(--surface-line); }
   .worksheet-card .card-body { padding: 0.75rem 0.85rem; }
-  .worksheet-card .w-title { font-weight: 700; font-size: 0.92rem; margin: 0 0 0.15rem; }
-  .worksheet-card .w-meta { font-size: 0.78rem; color: var(--gold); margin: 0; }
-  .worksheet-empty { text-align: center; color: var(--ink-soft); font-size: 0.92rem; padding: 2rem 0; }
+  .worksheet-card .w-title { font-weight: 700; font-size: 0.92rem; margin: 0 0 0.2rem; }
+  .worksheet-card .w-type {
+    display: inline-block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    background: var(--surface-2);
+    border-radius: 999px;
+    padding: 0.15rem 0.55rem;
+  }
+  .worksheet-empty { text-align: center; color: var(--ink-soft); font-size: 0.92rem; padding: 2rem 0; grid-column: 1/-1; }
 
-  footer { text-align: center; margin-top: 3rem; color: var(--ink-soft); font-size: 0.82rem; }
+  /* Scroll-reveal */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in-view { opacity: 1; transform: none; }
+
+  footer { text-align: center; padding: 2.5rem 0 3rem; color: var(--ink-soft); font-size: 0.82rem; }
   footer a { color: var(--raspberry); }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #F3E9EF; --ink-soft: #C9B4C8; --ground: #211320; --surface: #2E1B30;
+      --surface-2: #3A2440; --surface-line: #422A44; --gold: #E0A83E; --gold-bg: #C2871F;
+      --raspberry: #E17DA8; --raspberry-soft: #6B3550; --sky: #7FA8DC;
+    }
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header>
-    <img class="logo" src="assets/logo.png" alt="Baby Royals Radio">
-    <h1>Baby Royals Radio</h1>
-    <p class="tagline">Learning through songs &middot; Growing in faith</p>
-  </header>
+  <div class="hero">
+    <div class="hero-deco" aria-hidden="true">
+      <span style="top:8%;left:8%;animation-delay:0s;">🎵</span>
+      <span style="top:14%;right:10%;animation-delay:1.2s;">⭐</span>
+      <span style="top:55%;left:4%;animation-delay:2.1s;">🎶</span>
+      <span style="top:60%;right:6%;animation-delay:0.6s;">✨</span>
+      <span style="top:30%;left:50%;animation-delay:1.7s;">👑</span>
+    </div>
+    <div class="wrap hero-content">
+      <img class="logo" src="assets/logo.png" alt="Baby Royals Radio">
+      <h1>Baby Royals Radio</h1>
+      <p class="tagline">Learning through songs &middot; Growing in faith</p>
 
-  <div class="links">
-    <a class="link-btn" href="https://youtube.com/@babyroyalsradio" target="_blank" rel="noopener">
-      <svg class="icon" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
-      Watch on YouTube
-      <span class="arrow">&rarr;</span>
-    </a>
-    <a class="link-btn" href="https://instagram.com/babyroyalmag" target="_blank" rel="noopener">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#C2871F" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.2" cy="6.8" r="1.1" fill="#C2871F" stroke="none"/></svg>
-      Follow on Instagram
-      <span class="arrow">&rarr;</span>
-    </a>
-    <a class="link-btn" href="https://facebook.com/112733603785117" target="_blank" rel="noopener">
-      <svg class="icon" viewBox="0 0 24 24" fill="#3B5998"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
-      Follow on Facebook
-      <span class="arrow">&rarr;</span>
-    </a>
+      <div class="stats-row">
+        <div class="stat"><div class="stat-num">2,250</div><div class="stat-label">Subscribers</div></div>
+        <div class="stat"><div class="stat-num">145K+</div><div class="stat-label">Views</div></div>
+        <div class="stat"><div class="stat-num">24</div><div class="stat-label">Songs</div></div>
+      </div>
+
+      <div class="links">
+        <a class="link-btn" href="https://youtube.com/@babyroyalsradio" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+          Watch on YouTube
+          <span class="arrow">&rarr;</span>
+        </a>
+        <a class="link-btn" href="https://instagram.com/babyroyalmag" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#C2871F" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.2" cy="6.8" r="1.1" fill="#C2871F" stroke="none"/></svg>
+          Follow on Instagram
+          <span class="arrow">&rarr;</span>
+        </a>
+        <a class="link-btn" href="https://facebook.com/112733603785117" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="#3B5998"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+          Follow on Facebook
+          <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
   </div>
 
-  <section class="worksheets">
-    <h2>Free Printables</h2>
-    <p class="section-sub">Grab a worksheet to go with your favorite song</p>
-    <div class="worksheet-grid" id="worksheet-grid">
-      <p class="worksheet-empty">Loading...</p>
+  <section class="featured reveal">
+    <div class="wrap">
+      <h2>Our Most-Loved Song</h2>
+      <p class="section-sub">The Seasons Song &mdash; taught in English &amp; Spanish</p>
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/zAZIh0G7WP4" title="The Seasons Song" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p class="video-caption"><strong>60,000+ views</strong> &mdash; one of our biggest hits. New songs every week on YouTube.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="wrap">
+      <h2>Meet the Cast</h2>
+      <p class="section-sub">The little royals who star in our songs</p>
+      <div class="cast-grid">
+        <div class="cast-card"><img src="assets/characters/kennedy.png" alt="Kennedy, age 6"><div class="cast-name">Kennedy, 6</div></div>
+        <div class="cast-card"><img src="assets/characters/skylar.png" alt="Skylar, age 5"><div class="cast-name">Skylar, 5</div></div>
+        <div class="cast-card"><img src="assets/characters/papa.png" alt="Papa, age 3"><div class="cast-name">"Papa," 3</div></div>
+        <div class="cast-card"><img src="assets/characters/asher.png" alt="Asher, age 1"><div class="cast-name">Asher, 1</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="wrap">
+      <h2>Free Printables</h2>
+      <p class="section-sub">Grab a worksheet to go with your favorite song</p>
+      <div class="worksheet-grid" id="worksheet-grid">
+        <p class="worksheet-empty">Loading...</p>
+      </div>
     </div>
   </section>
 
   <footer>
     &copy; <span id="year"></span> Baby Royals Radio &middot; a project of <a href="https://instagram.com/babyroyalmag">Baby Royals Mag</a>
   </footer>
-
-</div>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -147,12 +303,12 @@
         grid.innerHTML = '<p class="worksheet-empty">New printables coming soon!</p>';
         return;
       }
-      grid.innerHTML = items.map(w => `
+      grid.innerHTML = items.slice().reverse().map(w => `
         <a class="worksheet-card" href="worksheets/${w.file}" download>
           <img src="worksheets/${w.file}" alt="${w.title}" loading="lazy">
           <div class="card-body">
             <p class="w-title">${w.title}</p>
-            <p class="w-meta">${w.type}</p>
+            <span class="w-type">${w.type}</span>
           </div>
         </a>
       `).join('');
@@ -160,6 +316,16 @@
     .catch(() => {
       document.getElementById('worksheet-grid').innerHTML = '<p class="worksheet-empty">Couldn\'t load printables right now.</p>';
     });
+
+  // Scroll-reveal for sections
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
+  }
 </script>
 </body>
 </html>
