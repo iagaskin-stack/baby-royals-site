@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baby Royals Radio</title>
+<meta name="description" content="Free bilingual learning worksheets from Baby Royals Radio, plus links to our songs on YouTube, Instagram, and Facebook.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Karla:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --ink: #2A1730;
+    --ink-soft: #5B4560;
+    --ground: #FBF3EC;
+    --surface: #FFFFFF;
+    --surface-line: #E3CDBC;
+    --gold: #A66A17;
+    --gold-bg: #C2871F;
+    --raspberry: #9C2C5B;
+    --font-display: 'Bricolage Grotesque', Georgia, serif;
+    --font-body: 'Karla', 'Segoe UI', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+
+  header { text-align: center; margin-bottom: 2rem; }
+  .logo { width: 128px; height: 128px; border-radius: 24px; box-shadow: 0 8px 24px -8px rgba(42,23,48,0.35); }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 1rem 0 0.3rem;
+  }
+  .tagline { color: var(--ink-soft); font-size: 0.98rem; margin: 0; }
+
+  .links { display: flex; flex-direction: column; gap: 0.75rem; margin: 2rem 0; }
+  .link-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--surface);
+    border: 1px solid var(--surface-line);
+    border-radius: 14px;
+    padding: 0.95rem 1.2rem;
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 1.02rem;
+    box-shadow: 0 1px 2px rgba(42,23,48,0.06);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .link-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -8px rgba(42,23,48,0.25); }
+  .link-btn .icon { width: 24px; height: 24px; flex: none; }
+  .link-btn .arrow { margin-left: auto; color: var(--ink-soft); }
+
+  section.worksheets { margin-top: 2.5rem; }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 0.3rem;
+  }
+  .section-sub { text-align: center; color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 1.5rem; }
+
+  .worksheet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  .worksheet-card {
+    background: var(--surface);
+    border: 1px solid var(--surface-line);
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--ink);
+    box-shadow: 0 1px 2px rgba(42,23,48,0.06);
+    display: flex;
+    flex-direction: column;
+  }
+  .worksheet-card img { width: 100%; aspect-ratio: 8.5/11; object-fit: cover; display: block; border-bottom: 1px solid var(--surface-line); }
+  .worksheet-card .card-body { padding: 0.75rem 0.85rem; }
+  .worksheet-card .w-title { font-weight: 700; font-size: 0.92rem; margin: 0 0 0.15rem; }
+  .worksheet-card .w-meta { font-size: 0.78rem; color: var(--gold); margin: 0; }
+  .worksheet-empty { text-align: center; color: var(--ink-soft); font-size: 0.92rem; padding: 2rem 0; }
+
+  footer { text-align: center; margin-top: 3rem; color: var(--ink-soft); font-size: 0.82rem; }
+  footer a { color: var(--raspberry); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img class="logo" src="assets/logo.png" alt="Baby Royals Radio">
+    <h1>Baby Royals Radio</h1>
+    <p class="tagline">Learning through songs &middot; Growing in faith</p>
+  </header>
+
+  <div class="links">
+    <a class="link-btn" href="https://youtube.com/@babyroyalsradio" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+      Watch on YouTube
+      <span class="arrow">&rarr;</span>
+    </a>
+    <a class="link-btn" href="https://instagram.com/babyroyalmag" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#C2871F" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.2" cy="6.8" r="1.1" fill="#C2871F" stroke="none"/></svg>
+      Follow on Instagram
+      <span class="arrow">&rarr;</span>
+    </a>
+    <a class="link-btn" href="https://facebook.com/112733603785117" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" fill="#3B5998"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+      Follow on Facebook
+      <span class="arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <section class="worksheets">
+    <h2>Free Printables</h2>
+    <p class="section-sub">Grab a worksheet to go with your favorite song</p>
+    <div class="worksheet-grid" id="worksheet-grid">
+      <p class="worksheet-empty">Loading...</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; <span id="year"></span> Baby Royals Radio &middot; a project of <a href="https://instagram.com/babyroyalmag">Baby Royals Mag</a>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  fetch('worksheets/manifest.json')
+    .then(r => r.json())
+    .then(items => {
+      const grid = document.getElementById('worksheet-grid');
+      if (!items.length) {
+        grid.innerHTML = '<p class="worksheet-empty">New printables coming soon!</p>';
+        return;
+      }
+      grid.innerHTML = items.map(w => `
+        <a class="worksheet-card" href="worksheets/${w.file}" download>
+          <img src="worksheets/${w.file}" alt="${w.title}" loading="lazy">
+          <div class="card-body">
+            <p class="w-title">${w.title}</p>
+            <p class="w-meta">${w.type}</p>
+          </div>
+        </a>
+      `).join('');
+    })
+    .catch(() => {
+      document.getElementById('worksheet-grid').innerHTML = '<p class="worksheet-empty">Couldn\'t load printables right now.</p>';
+    });
+</script>
+</body>
+</html>
