@@ -6,5 +6,13 @@
     "source_video": "hypothesis-recap.mp4",
     "type": "coloring",
     "date_added": "2026-08-26"
+  },
+  {
+    "title": "Sight Words: Look, Like, Come, Find",
+    "subtitle": "Trace each word",
+    "file": "sightwords-tracing.png",
+    "source_video": "sightwords-montage.mp4",
+    "type": "tracing",
+    "date_added": "2026-08-26"
   }
 ]
